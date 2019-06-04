@@ -1,0 +1,180 @@
+<html>
+<head>
+  <style type="text/css">
+    .input-box {
+      width: 100%;
+      display         : flex       ;
+      flex-flow       : row nowrap ;
+      justify-content : center     ;
+      align-content   : center     ;
+      align-items     : center     ;
+    }
+    .find-copy {
+      width: 30px;
+    }
+    .find-input {
+      width: 100%;
+    }
+  </style>
+  <script>
+    function copyFind(id) {
+      let inputElement = document.getElementById(id);
+      inputElement.select();
+      document.execCommand("copy");
+    }
+  </script>
+</head>
+<body>
+    <h1>Convert/setup Pre-Auth PDF Data for copy/paste to a template</h1>
+    <h2><strong>NOTE</strong></h2>
+    <p>This document must be updated if new sites are added. Current sites are:</p>
+    <ul>
+    <li>AE</li>
+    <li>AM</li>
+    <li>AP</li>
+    <li>BD</li>
+    <li>BM</li>
+    <li>BN</li>
+    <li>BP</li>
+    <li>OD</li>
+    <li>RS</li>
+    </ul>
+    <p>Iterate through the three sections below with the appropriate find/replace
+    1. copy everything between the <code>/</code> characters at the beginning and end of the search expressions
+    2. make sure regular expressions is selected in the options to the left of <code>Find:</code> (the <code>🞻</code> symbol)
+    3. it is not necessary to save or save and close the files during the process...
+    Finally from the cleaned up text files: copy/paste the pre-auth info into the appropriate Excel invoice template</p>
+    <h2><a id="user-content-start-here" class="anchor" aria-hidden="true" href="#start-here"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>START HERE</h2>
+    <h4><a id="user-content-first-remove-all-leading-spaces" class="anchor" aria-hidden="true" href="#first-remove-all-leading-spaces"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>First remove all leading spaces</h4>
+    <ul>
+    <li><code>ctrl+a</code> to select all text</li>
+    <li><code>Shift+Tab</code> to remove all leading spaces</li>
+    </ul>
+    <ul>
+    <li>
+    <h4>Begin: Find and Replace (strips out extra blank lines and spaces)</h4>
+    <p>Find:</p>
+    <div class="input-box">
+      <button class="find-copy" onclick="copyFind('find0001')"></button>
+      <input id="find0001" class="find-input" type="text" value="[ \t]" />
+    </div>
+
+    <div class="highlight highlight-source-js"><pre>[ \t]<span class="pl-k">*</span>\n</pre></div>
+    <p>Replace:</p>
+    <div class="highlight highlight-source-js"><pre>\n</pre></div>
+    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">[ ]</span><span class="pl-k">+</span><span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span> <span class="pl-pds">/</span></span></pre></div>
+    </li>
+    <li>
+    <h4><a id="user-content-strip-out-any-extra-spaces-at-beginnings-of-lines-in-case-the-leading-spaces-werent-all-removed" class="anchor" aria-hidden="true" href="#strip-out-any-extra-spaces-at-beginnings-of-lines-in-case-the-leading-spaces-werent-all-removed"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Strip out any extra spaces at beginnings of lines in case the leading spaces weren't all removed</h4>
+    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-k">^</span><span class="pl-c1">[ <span class="pl-c1">\t</span>]</span><span class="pl-k">+</span><span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-c"><span class="pl-c">//</span></span></pre></div>
+    </li>
+    <li>
+    <h4><a id="user-content-remove-lengthy-multi-line-headers-and-replace-it-with-a-single-header-line" class="anchor" aria-hidden="true" href="#remove-lengthy-multi-line-headers-and-replace-it-with-a-single-header-line"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Remove lengthy multi-line headers and replace it with a single header line</h4>
+    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span>(ae<span class="pl-k">|</span>am<span class="pl-k">|</span>ap<span class="pl-k">|</span>bd<span class="pl-k">|</span>bm<span class="pl-k">|</span>bn<span class="pl-k">|</span>bp<span class="pl-k">|</span>od<span class="pl-k">|</span>rs) <span class="pl-k">*</span>(<span class="pl-c1">\d</span><span class="pl-k">+</span><span class="pl-cce">\.</span><span class="pl-c1">\d</span><span class="pl-k">+</span>(?:<span class="pl-c1">\s</span><span class="pl-k">*</span>pt<span class="pl-cce">\.</span><span class="pl-k">?</span><span class="pl-c1">\d</span>)<span class="pl-k">?</span><span class="pl-cce">\.</span>txt)<span class="pl-c1">\n</span>(?:<span class="pl-c1">[<span class="pl-cce">\:</span><span class="pl-c1">\-<span class="pl-cce">\/</span></span><span class="pl-cce">\.\#</span>,<span class="pl-cce">\@\+</span><span class="pl-c1">\w\s</span>]</span><span class="pl-k">*?</span>(Authorization number)<span class="pl-cce">\:</span> <span class="pl-k">*</span>(<span class="pl-c1">\d</span><span class="pl-k">{10}</span>)<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-c1">[<span class="pl-c1">\w</span> <span class="pl-cce">\:</span><span class="pl-c1">\n</span>,<span class="pl-cce">\(\/</span><span class="pl-c1">\-<span class="pl-cce">\.</span></span><span class="pl-cce">\#</span><span class="pl-c1">\t</span>]</span><span class="pl-k">*</span><span class="pl-cce">\)</span>)<span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-k">\1</span> <span class="pl-k">\2</span><span class="pl-c1">\n</span>◊~~~~~~~~~~~~~~~~~~~~◊<span class="pl-c1">\n</span>Item<span class="pl-c1">\t</span>Technician<span class="pl-c1">\t</span>Unit No<span class="pl-c1">.\t</span>Order No<span class="pl-c1">.\t</span>Hrs<span class="pl-c1">\t</span>Auth   No<span class="pl-c1">.\t</span><span class="pl-k">\4</span><span class="pl-c1">\n</span>◊~~~~~~~~~~~~~~~~~~~~◊<span class="pl-c1">\n</span><span class="pl-pds">/</span></span></pre></div>
+    </li>
+    <li>
+    <h4><a id="user-content-item-no-wonum-unit-no-tech-hrs-" class="anchor" aria-hidden="true" href="#item-no-wonum-unit-no-tech-hrs-"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>item no. woNum, unit No. Tech, Hrs ...</h4>
+    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span>(<span class="pl-c1">\d</span><span class="pl-k">+</span>) (<span class="pl-c1">\d</span><span class="pl-k">{6,10}</span><span class="pl-k">|</span>COST CENTER )(<span class="pl-c1">[<span class="pl-c1">A-Za-z</span><span class="pl-c1">.</span> éáóíñ]</span><span class="pl-k">*</span>) (<span class="pl-c1">\d</span><span class="pl-k">+</span><span class="pl-cce">\.</span><span class="pl-c1">\d</span><span class="pl-k">+</span>) <span class="pl-k">*</span><span class="pl-cce">\/</span> <span class="pl-k">*</span>H <span class="pl-c1">\d</span><span class="pl-k">+</span><span class="pl-cce">\.</span><span class="pl-c1">\d\d</span> USD(?: <span class="pl-k">*</span>550420<span class="pl-cce">\/</span>order<span class="pl-cce">\/</span>(1014210015<span class="pl-k">|</span><span class="pl-c1">\d</span><span class="pl-k">{8,10}</span><span class="pl-k">|</span><span class="pl-c1">\d</span><span class="pl-k">{4}</span>) (<span class="pl-c1">\d</span><span class="pl-k">+</span>)<span class="pl-cce">\(</span>100<span class="pl-cce">\.</span>00<span class="pl-cce">\%\)</span><span class="pl-k">|</span> <span class="pl-k">*</span>550420<span class="pl-cce">\/</span>Cost center<span class="pl-cce">\/</span>(1014210015<span class="pl-k">|</span><span class="pl-c1">\d</span><span class="pl-k">{4,10}</span><span class="pl-k">|</span><span class="pl-c1">\d</span><span class="pl-k">+</span> <span class="pl-c1">\d</span><span class="pl-k">+</span>) <span class="pl-k">*</span><span class="pl-cce">\(</span>100<span class="pl-cce">\.</span>00<span class="pl-cce">\%\)</span>)<span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span><span class="pl-k">\1</span><span class="pl-c1">\t</span><span class="pl-k">\3</span><span class="pl-c1">\t</span><span class="pl-k">\2</span><span class="pl-c1">\t</span><span class="pl-k">\5\6\7</span><span class="pl-c1">\t</span><span class="pl-k">\4</span><span class="pl-pds">/</span></span></pre></div>
+    </li>
+    <li>
+    <h4><a id="user-content-remove-table-headers-and-page-no-stuff" class="anchor" aria-hidden="true" href="#remove-table-headers-and-page-no-stuff"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Remove table headers and page no. stuff</h4>
+    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span>(?:(<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\"</span><span class="pl-k">?</span>Item<span class="pl-c1">.</span><span class="pl-k">*</span><span class="pl-cce">\)</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>SESA<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-c1">\d</span><span class="pl-k">*</span><span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-c1">\n</span><span class="pl-k">?</span>)<span class="pl-k">?</span>(<span class="pl-c1">\n</span><span class="pl-k">*</span><span class="pl-c1">\s</span><span class="pl-k">*</span>Page<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-c1">\d</span><span class="pl-k">*</span><span class="pl-c1">\s</span><span class="pl-k">*</span>OF<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-c1">\d</span><span class="pl-k">*</span><span class="pl-c1">\s</span><span class="pl-k">*</span>)(<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\"</span><span class="pl-k">?</span>Item<span class="pl-c1">\n</span><span class="pl-k">?</span>#<span class="pl-cce">\"</span><span class="pl-k">?</span><span class="pl-c1">\s</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>Vendor<span class="pl-c1">\s</span><span class="pl-k">*</span>Service<span class="pl-c1">\s</span><span class="pl-k">*</span>Number<span class="pl-c1">\s</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>Service<span class="pl-c1">\s</span><span class="pl-k">*</span>M<span class="pl-c1">.</span><span class="pl-k">{2,8}</span><span class="pl-c1">\s</span>Number<span class="pl-c1">\s</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>Description<span class="pl-c1">\s</span><span class="pl-k">*</span>Quantity<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\/</span><span class="pl-c1">\s</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>Unit<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\"</span><span class="pl-k">?</span>Estimated<span class="pl-c1">\s</span><span class="pl-k">*</span>Total<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-c1">\n</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>Item<span class="pl-c1">\s</span><span class="pl-k">*</span>Price<span class="pl-cce">\"</span><span class="pl-k">?</span><span class="pl-c1">\s</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>Cost<span class="pl-c1">\s</span><span class="pl-k">*</span>Object<span class="pl-c1">\s</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\(</span><span class="pl-k">?</span>GL<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\/</span><span class="pl-c1">\s</span><span class="pl-k">*</span>Category<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\/</span><span class="pl-c1">\s</span><span class="pl-k">*</span>Cost<span class="pl-c1">\s</span><span class="pl-k">*</span>Object<span class="pl-cce">\)</span><span class="pl-k">?</span>)<span class="pl-k">?</span>)<span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span> 
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span></pre></div>
+    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span>(item<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-c1">.</span><span class="pl-k">*</span><span class="pl-c1">\n</span><span class="pl-k">*</span>)<span class="pl-k">+</span><span class="pl-cce">\)</span><span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span></pre></div>
+    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span> <span class="pl-k">*</span>SESA<span class="pl-c1">.</span><span class="pl-k">*</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span></pre></div>
+    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span>Pre-authorization document - <span class="pl-c1">\d</span><span class="pl-k">+</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span></pre></div>
+    <div class="highlight highlight-source-js"><pre><span class="pl-c"><span class="pl-c">//</span> repeat this to remove all extra lines</span>
+    Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">[ <span class="pl-c1">\t</span>]</span><span class="pl-k">*</span><span class="pl-c1">\n</span><span class="pl-k">+</span><span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span></pre></div>
+    </li>
+    <li>
+    <h4><a id="user-content-clean-up-for-excel" class="anchor" aria-hidden="true" href="#clean-up-for-excel"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Clean-up for excel:</h4>
+    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span>===================================================================<span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span>============<span class="pl-c1">\n\n</span><span class="pl-pds">/</span></span>
+    
+    Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span>(ae<span class="pl-k">|</span>am<span class="pl-k">|</span>ap<span class="pl-k">|</span>bd<span class="pl-k">|</span>bm<span class="pl-k">|</span>bn<span class="pl-k">|</span>bp<span class="pl-k">|</span>od<span class="pl-k">|</span>rs) <span class="pl-k">*</span>(<span class="pl-c1">\d</span><span class="pl-k">+</span><span class="pl-cce">\.</span><span class="pl-c1">\d</span><span class="pl-k">+</span>(?:<span class="pl-c1">\s</span><span class="pl-k">*</span>pt<span class="pl-cce">\.</span><span class="pl-k">?</span><span class="pl-c1">\d</span>)<span class="pl-k">?</span><span class="pl-cce">\.</span>txt)<span class="pl-c1">\n</span>◊~~~~~~~~~~~~~~~~~~~~◊<span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-k">\1</span> <span class="pl-k">\2</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span>
+    
+    Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span>◊~~~~~~~~~~~~~~~~~~~~◊<span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-c"><span class="pl-c">//</span></span></pre></div>
+    </li>
+    <li>
+    <h4><a id="user-content-clean-up-any-records-that-were-missed-earlier-usually-missing-unit-number-before-name" class="anchor" aria-hidden="true" href="#clean-up-any-records-that-were-missed-earlier-usually-missing-unit-number-before-name"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Clean up any records that were missed earlier (usually missing unit number before name)</h4>
+    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-k">^</span>(<span class="pl-c1">\d</span><span class="pl-k">+</span>)<span class="pl-c1">[ ]</span><span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-k">\1</span> 00000000 <span class="pl-pds">/</span></span>
+    
+    Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span>(<span class="pl-c1">\d</span><span class="pl-k">+</span>) (<span class="pl-c1">\d</span><span class="pl-k">{6,10}</span><span class="pl-k">|</span>COST CENTER )(<span class="pl-c1">[<span class="pl-c1">A-Za-z</span><span class="pl-c1">.</span> éáóíñ]</span><span class="pl-k">*</span>) (<span class="pl-c1">\d</span><span class="pl-k">+</span><span class="pl-cce">\.</span><span class="pl-c1">\d</span><span class="pl-k">+</span>) <span class="pl-k">*</span><span class="pl-cce">\/</span> <span class="pl-k">*</span>H <span class="pl-c1">\d</span><span class="pl-k">+</span><span class="pl-cce">\.</span><span class="pl-c1">\d\d</span> USD(?: <span class="pl-k">*</span>550420<span class="pl-cce">\/</span>order<span class="pl-cce">\/</span>(1014210015<span class="pl-k">|</span><span class="pl-c1">\d</span><span class="pl-k">{8,10}</span><span class="pl-k">|</span><span class="pl-c1">\d</span><span class="pl-k">{4}</span>) (<span class="pl-c1">\d</span><span class="pl-k">+</span>)<span class="pl-cce">\(</span>100<span class="pl-cce">\.</span>00<span class="pl-cce">\%\)</span><span class="pl-k">|</span> <span class="pl-k">*</span>550420<span class="pl-cce">\/</span>Cost center<span class="pl-cce">\/</span>(1014210015<span class="pl-k">|</span><span class="pl-c1">\d</span><span class="pl-k">{4,10}</span><span class="pl-k">|</span><span class="pl-c1">\d</span><span class="pl-k">+</span> <span class="pl-c1">\d</span><span class="pl-k">+</span>) <span class="pl-k">*</span><span class="pl-cce">\(</span>100<span class="pl-cce">\.</span>00<span class="pl-cce">\%\)</span>)<span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span><span class="pl-k">\1</span><span class="pl-c1">\t</span><span class="pl-k">\3</span><span class="pl-c1">\t</span><span class="pl-k">\2</span><span class="pl-c1">\t</span><span class="pl-k">\5\6\7</span><span class="pl-c1">\t</span><span class="pl-k">\4</span><span class="pl-pds">/</span></span></pre></div>
+    </li>
+    <li>
+    <h4><a id="user-content-final-cleanup-of-extra-spaces" class="anchor" aria-hidden="true" href="#final-cleanup-of-extra-spaces"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Final cleanup of extra spaces</h4>
+    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">[ ]</span><span class="pl-k">*</span><span class="pl-c1">\t</span><span class="pl-c1">[ ]</span><span class="pl-k">*</span><span class="pl-pds">/</span></span>
+    Replace<span class="pl-k">:</span>
+    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\t</span><span class="pl-pds">/</span></span></pre></div>
+    </li>
+    </ul>
+    <p>--</p>
+    <h2><a id="user-content-extras" class="anchor" aria-hidden="true" href="#extras"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>EXTRAS</h2>
+    <h3><a id="user-content-clean" class="anchor" aria-hidden="true" href="#clean"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Clean</h3>
+    <p><strong>NEW</strong></p>
+    <hr>
+    <h4><a id="user-content-remove-all-leading-spaces-at-the-beginning-of-new-lines" class="anchor" aria-hidden="true" href="#remove-all-leading-spaces-at-the-beginning-of-new-lines"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Remove all leading spaces at the beginning of new lines</h4>
+    <pre><b>This text has no leading spaces</b>
+      <b>this text has two leading spaces</b> (typical indentation using spaces for 1 tab)
+        <b>this text has 4 leading spaces</b> or the equivelent of 2 tab indentation using spaces (2 spaces/tab)
+    </pre>
+    <p>Sublime Text and most other text(code) editors allow you to select a block of text to set indentation.
+    Select the block of text (must be at least two lines of text);
+    Use: <code>TAB</code> to increase indentation (leading spaces or tabs)
+    use: <code>SHFT+TAB</code> to decrease indentation</p>
+    <p>We want all of the leading spaces removed in the <code>output.txt</code> file.  This simplifies the <em>regex</em> expressions</p>
+    <ul>
+    <li>all of the following regex expressions are constructed such that every new line (<code>\n</code>) is followed by any character except a space</li>
+    <li>following the above description select the block of text to <em>decrease the indentation</em></li>
+    <li>Since we want all of the text, our "block of text" is the entire contents of the <code>output.txt</code> file.</li>
+    <li>We select the entire contents with the keyboard shortcut <code>CTRL+A</code> (you shoule see the entire contents highlighted now)</li>
+    <li>Use <code>SHFT+TAB</code> to decrease the indentation (by holding down the <code>SHFT+TAB</code> the command is repeated until all leading spaces are removed)</li>
+    </ul>
+    <h4><a id="user-content-bonus" class="anchor" aria-hidden="true" href="#bonus"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bonus</h4>
+    <p>The above section is written because indenting or un-indenting blocks of text is useful and does not require <code>regex</code> expressions in <code>Find/Replace</code> to accomplish since it is
+    almost always used in coding or text-only documents to <em>visually</em> structure the text.  However, in the next section <em>"Begin: Find and Replace"</em> the first <code>regex</code> expression removes trailing spaces or <code>TAB</code>(s) after text and before the newline <code>\n</code>.  The square brackets <code>[]</code> creates a group of characters which can be found in any order.  The <code>*</code> after the closing bracket <code>]</code> means that you will select "zero to as many as exist" of these characters" and in this expression: <code>/[ \t]*\n/</code>, <em>zero or more spaces or tabs before a newline</em> (these are called trailing spaces since they trail normal text at the end of a line).  Since we are already using regular expressions to parse the pre-auth data in <code>output.txt</code>, how would you re-write the expression</p>
+    <div class="highlight highlight-source-js"><pre><span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">[ <span class="pl-c1">\t</span>]</span><span class="pl-k">*</span><span class="pl-c1">\n</span><span class="pl-c1">[ <span class="pl-c1">\t</span>]</span><span class="pl-k">*</span><span class="pl-pds">/</span></span></pre></div>
+    <p>to include leading as well as trailing spaces (or tabs) at the beginning and ends of every line?</p>
+</body>
+</html>
