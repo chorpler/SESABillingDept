@@ -3,6 +3,62 @@
   <meta charset="utf-8">
   <title>Preauths</title>
   <style type="text/css">
+    .fr-list li {
+      background-color: rgba(0, 255, 255, 0.05);
+      border: 1px dotted lightgrey;
+      margin-top: 10px;
+      padding: 5px;
+      border-radius: 10px;
+    }
+    .fr-list li h4 {
+      margin-top: 2px;
+    }
+    .sr-box {
+      width: 100%;
+      display         : flex       ;
+      flex-flow       : column nowrap ;
+      justify-content : center     ;
+      align-content   : center     ;
+      align-items     : center     ;
+      background-color: rgba(0, 255, 255, 0.05);
+    }
+    .sr-row {
+      width: 100%;
+      display         : flex       ;
+      flex-flow       : row nowrap ;
+      justify-content : center     ;
+      align-content   : center     ;
+      align-items     : center     ;
+    }
+    .sr-row.copied input {
+      border: 3px solid green;
+    }
+    .label {
+      display: block;
+      width: 65px;
+      font-weight: bold;
+      text-align: right;
+      padding-right: 5px;
+      color: black;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    .label:hover {
+      color: black;
+      background-color: rgba(0, 0, 128, 0.2);
+    }
+    .label:active {
+      color: white;
+      background-color: rgba(0, 0, 128, 0.5);
+    }
+    .data {
+      display: block;
+      width: 95%;
+      font-weight: normal;
+      text-align: left;
+      padding-left: 2px;
+
+    }
     .input-box {
       width: 100%;
       display         : flex       ;
@@ -50,17 +106,22 @@
   <script>
     function copyFind(id) {
       let inputElement = document.getElementById(id);
+      let parentRow = inputElement.parentElement.parentElement;
+      let allRows = document.querySelectorAll(".sr-row");
+      allRows.forEach((el, key, parent) => {
+        el.classList.remove("copied");
+      });
+      parentRow.classList.add("copied");
       inputElement.select();
       document.execCommand("copy");
     }
   </script>
 </head>
 <body>
-
-    <h1>Convert/setup Pre-Auth PDF Data for copy/paste to a template</h1>
-    <h2><strong>NOTE</strong></h2>
-    <p>This document must be updated if new sites are added. Current sites are:</p>
-    <ul>
+  <h1>Convert/setup Pre-Auth PDF Data for copy/paste to a template</h1>
+  <h2><strong>NOTE</strong></h2>
+  <p>This document must be updated if new sites are added. Current sites are:</p>
+  <ul>
     <li>AE</li>
     <li>AM</li>
     <li>AP</li>
@@ -69,157 +130,331 @@
     <li>BN</li>
     <li>BP</li>
     <li>OD</li>
+    <li>OFT</li>
     <li>RS</li>
-    </ul>
-    <p>Iterate through the three sections below with the appropriate find/replace
-    1. copy everything between the <code>/</code> characters at the beginning and end of the search expressions
-    2. make sure regular expressions is selected in the options to the left of <code>Find:</code> (the <code>🞻</code> symbol)
-    3. it is not necessary to save or save and close the files during the process...
-    Finally from the cleaned up text files: copy/paste the pre-auth info into the appropriate Excel invoice template</p>
-    <h2>START HERE</h2>
-    <ol>
-      <li>
-          <h4>First remove all leading spaces</h4>
-          <ul>
-              <li><code>ctrl+a</code> to select all text</li>
-              <li><code>Shift+Tab</code> to remove all leading spaces</li>
-          </ul>
-      </li>
-    </ol>
-    <ul>
+  </ul>
+  <p>Iterate through the three sections below with the appropriate find/replace
+  1. copy everything between the <code>/</code> characters at the beginning and end of the search expressions
+  2. make sure regular expressions is selected in the options to the left of <code>Find:</code> (the <code>🞻</code> symbol)
+  3. it is not necessary to save or save and close the files during the process...
+  Finally from the cleaned up text files: copy/paste the pre-auth info into the appropriate Excel invoice template</p>
+  <h2>START HERE</h2>
+  
+  <ol class="fr-list">
     <li>
-      <h4>Begin: Find and Replace (strips out extra blank lines and spaces)</h4>
-      <p>Find:</p>
-      <div class="input-box">
-        <div class="find-copy" onclick="copyFind('find0001')" title="Copy"><svg class="icon-svg"><use xlink:href="copy.svg#copy-icon"></use></svg></svg></div>
-        <input id="find0001" class="find-input" type="text" value="[ \t]*\n" />
-      </div>
-      <p>Replace:</p>
-      <div class="input-box">
-        <div class="find-copy" onclick="copyFind('repl0001')" title="Copy"><svg class="icon-svg"><use xlink:href="copy.svg#copy-icon"></use></svg></svg></div>
-        <input id="repl0001" class="find-input" type="text" value="\n" />
+      <h4>First remove all leading spaces</h4>
+      <ul>
+        <li><code>ctrl+a</code> to select all text</li>
+        <li><code>Shift+Tab</code> to remove all leading spaces</li>
+      </ul>
+    </li>
+    <li>
+      <h4>START FIND AND REPLACE</h4>
+      <h4>Strip out extra blank lines and spaces</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0001')" title="Copy">Find</div>
+          <div class="data"><input id="find0001" class="find-input" readonly="true" type="text" value="[ \t]*\n" /></div>
+          <!-- <div class="input-box"> -->
+            <!-- <div class="find-copy" onclick="copyFind('find0001')" title="Copy"><svg class="icon-svg"><use xlink:href="copy.svg#copy-icon"></use></svg></svg></div> -->
+            <!-- <input id="find0001" class="find-input" type="text" value="[ \t]*\n" /> -->
+            <!-- </div> -->
+          </div>
+          <div class="sr-row">
+            <div class="label" onclick="copyFind('repl0001')" title="Copy">Replace</div>
+            <div class="data"><input id="repl0001" class="find-input" readonly="true" type="text" value="\n" /></div>
+          <!-- <div class="input-box">
+            <div class="find-copy" onclick="copyFind('repl0001')" title="Copy"><svg class="icon-svg"><use xlink:href="copy.svg#copy-icon"></use></svg></svg></div>
+            <input id="repl0001" class="find-input" type="text" value="\n" />
+          </div> -->
+        </div>
       </div>
     </li>
 
     <li>
-      <h4>Remove all extra spaces</h4>
-      <p>Find:</p>
-      <div class="input-box">
-        <div class="find-copy" onclick="copyFind('find0002')" title="Copy"><svg class="icon-svg"><use xlink:href="copy.svg#copy-icon"></use></svg></svg></div>
-        <input id="find0002" class="find-input" type="text" value="[ ]+" />
-      </div>
-      <p>Replace:</p>
-      <div class="input-box">
-        <div class="find-copy" onclick="copyFind('repl0002')" title="Copy"><svg class="icon-svg"><use xlink:href="copy.svg#copy-icon"></use></svg></svg></div>
-        <input id="repl0002" class="find-input" type="text" value=" " />
+      <h4>Convert all multiple spaces to single spaces</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0002')" title="Copy">Find</div>
+          <div class="data"><input id="find0002" class="find-input" readonly="true" type="text" value="[ ]+" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0002')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0002" class="find-input" readonly="true" type="text" value=" " /></div>
+        </div>
       </div>
     </li>
 
     <li>
       <h4>Strip out any extra spaces at beginnings of lines in case the leading spaces weren't all removed</h4>
-      <p>Find:</p>
-      <div class="input-box">
-        <div class="find-copy" onclick="copyFind('find0003')" title="Copy"><svg class="icon-svg"><use xlink:href="copy.svg#copy-icon"></use></svg></svg></div>
-        <input id="find0003" class="find-input" type="text" value="^[ \t]+" />
-      </div>
-      <p>Replace:</p>
-      <div class="input-box">
-        <div class="find-copy" onclick="copyFind('repl0003')" title="Copy"><svg class="icon-svg"><use xlink:href="copy.svg#copy-icon"></use></svg></svg></div>
-        <input id="repl0003" class="find-input" type="text" value="" />
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0003')" title="Copy">Find</div>
+          <div class="data"><input id="find0003" class="find-input" readonly="true" type="text" value="^[ \t]+(.*)$" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0003')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0003" class="find-input" readonly="true" type="text" value="\1" /></div>
+        </div>
       </div>
     </li>
     
     <li>
       <h4>Remove lengthy multi-line headers and replace it with a single header line</h4>
-      <p>Find:</p>
-      <div class="input-box">
-        <div class="find-copy" onclick="copyFind('find0004')" title="Copy"><svg class="icon-svg"><use xlink:href="copy.svg#copy-icon"></use></svg></svg></div>
-        <input id="find0004" class="find-input" type="text" value="(ae|am|ap|bd|bm|bn|bp|od|rs) *(\d+\.\d+(?:\s*pt\.?\d)?\.txt)\n(?:[\:\-\/\.\#,\@\+\w\s]*?(Authorization number)\: *(\d{10})\s*[\w \:\n,\(\/\-\.\#\t]*\))" />
-      </div>
-      <p>Replace:</p>
-      <div class="input-box">
-        <div class="find-copy" onclick="copyFind('repl0004')" title="Copy"><svg class="icon-svg"><use xlink:href="copy.svg#copy-icon"></use></svg></svg></div>
-        <input id="repl0004" class="find-input" type="text" value="\1 \2\n◊~~~~~~~~~~~~~~~~~~~~◊\nItem\tTechnician\tUnit No.\tOrder No.\tHrs\tAuth   No.\t\4\n◊~~~~~~~~~~~~~~~~~~~~◊\n" />
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0004')" title="Copy">Find</div>
+          <div class="data"><input id="find0004" class="find-input" readonly="true" type="text" value="(ae|am|ap|bd|bm|bn|bp|od|oft|rs) *(\d+\.\d+(?:\s*pt\.?\d)?\.txt)\n(?:[\:\-\/\.\#,\@\+\w\s]*?(Authorization number)\: *(\d{10})\s*[\w \:\n,\(\/\-\.\#\t]*\))" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0004')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0004" class="find-input" readonly="true" type="text" value="\1 \2\n◊~~~~~~~~~~~~~~~~~~~~◊\nItem\tTechnician\tUnit No.\tOrder No.\tHrs\tAuth   No.\t\4\n◊~~~~~~~~~~~~~~~~~~~~◊\n" /></div>
+        </div>
       </div>
     </li>
     
     <li>
       <h4>item no. woNum, unit No. Tech, Hrs …</h4>
-      <p>Find:</p>
-      <div class="input-box">
-        <div class="find-copy" onclick="copyFind('find0005')" title="Copy"><svg class="icon-svg"><use xlink:href="copy.svg#copy-icon"></use></svg></svg></div>
-        <input id="find0005" class="find-input" type="text" value="\n(\d+) (\d{6,10}|COST CENTER )([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{4,10}|\d+ \d+) *\(100\.00\%\))" />
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0005')" title="Copy">Find</div>
+          <!-- <div class="data"><input id="find0005" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER )([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{4,10}|\d+ \d+) *\(100\.00\%\))" /></div> -->
+          <div class="data"><input id="find0005" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER )([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{3,4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{3,10}|\d+ \d+) *\(100\.00\%\))" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0005')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0005" class="find-input" readonly="true" type="text" value="\n\1\t\3\t\2\t\5\6\7\t\4" /></div>
+        </div>
       </div>
-      <p>Replace:</p>
-      <div class="input-box">
-        <div class="find-copy" onclick="copyFind('repl0005')" title="Copy"><svg class="icon-svg"><use xlink:href="copy.svg#copy-icon"></use></svg></svg></div>
-        <input id="repl0005" class="find-input" type="text" value="\n\1\t\3\t\2\t\5\6\7\t\4" />
+    </li>
+    
+    <li>
+      <h4>Remove table headers and page no. stuff</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0006')" title="Copy">Find</div>
+          <div class="data"><input id="find0006" class="find-input" readonly="true" type="text" value='(?:(\s*\"?Item.*\))?(\s*SESA\s*\d*\s*\n?)?(\n*\s*Page\s*\d*\s*OF\s*\d*\s*)(\s*\"?Item\n?#\"?\s*)?(\s*Vendor\s*Service\s*Number\s*)?(\s*Service\s*M.{2,8}\sNumber\s*)?(\s*Description\s*Quantity\s*\/\s*)?(\s*Unit\s*\"?Estimated\s*Total\s*\n*)?(\s*Item\s*Price\"?\s*)?(\s*Cost\s*Object\s*)?(\s*\(?GL\s*\/\s*Category\s*\/\s*Cost\s*Object\)?)?)' /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0006')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0006" class="find-input" readonly="true" type="text" value="\n" /></div>
+        </div>
       </div>
     </li>
     
     <li>
-    <h4>Remove table headers and page no. stuff</h4>
-    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span>(?:(<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\"</span><span class="pl-k">?</span>Item<span class="pl-c1">.</span><span class="pl-k">*</span><span class="pl-cce">\)</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>SESA<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-c1">\d</span><span class="pl-k">*</span><span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-c1">\n</span><span class="pl-k">?</span>)<span class="pl-k">?</span>(<span class="pl-c1">\n</span><span class="pl-k">*</span><span class="pl-c1">\s</span><span class="pl-k">*</span>Page<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-c1">\d</span><span class="pl-k">*</span><span class="pl-c1">\s</span><span class="pl-k">*</span>OF<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-c1">\d</span><span class="pl-k">*</span><span class="pl-c1">\s</span><span class="pl-k">*</span>)(<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\"</span><span class="pl-k">?</span>Item<span class="pl-c1">\n</span><span class="pl-k">?</span>#<span class="pl-cce">\"</span><span class="pl-k">?</span><span class="pl-c1">\s</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>Vendor<span class="pl-c1">\s</span><span class="pl-k">*</span>Service<span class="pl-c1">\s</span><span class="pl-k">*</span>Number<span class="pl-c1">\s</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>Service<span class="pl-c1">\s</span><span class="pl-k">*</span>M<span class="pl-c1">.</span><span class="pl-k">{2,8}</span><span class="pl-c1">\s</span>Number<span class="pl-c1">\s</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>Description<span class="pl-c1">\s</span><span class="pl-k">*</span>Quantity<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\/</span><span class="pl-c1">\s</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>Unit<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\"</span><span class="pl-k">?</span>Estimated<span class="pl-c1">\s</span><span class="pl-k">*</span>Total<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-c1">\n</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>Item<span class="pl-c1">\s</span><span class="pl-k">*</span>Price<span class="pl-cce">\"</span><span class="pl-k">?</span><span class="pl-c1">\s</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span>Cost<span class="pl-c1">\s</span><span class="pl-k">*</span>Object<span class="pl-c1">\s</span><span class="pl-k">*</span>)<span class="pl-k">?</span>(<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\(</span><span class="pl-k">?</span>GL<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\/</span><span class="pl-c1">\s</span><span class="pl-k">*</span>Category<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-cce">\/</span><span class="pl-c1">\s</span><span class="pl-k">*</span>Cost<span class="pl-c1">\s</span><span class="pl-k">*</span>Object<span class="pl-cce">\)</span><span class="pl-k">?</span>)<span class="pl-k">?</span>)<span class="pl-pds">/</span></span>
-    Replace<span class="pl-k">:</span> 
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span></pre></div>
-    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span>(item<span class="pl-c1">\s</span><span class="pl-k">*</span><span class="pl-c1">.</span><span class="pl-k">*</span><span class="pl-c1">\n</span><span class="pl-k">*</span>)<span class="pl-k">+</span><span class="pl-cce">\)</span><span class="pl-pds">/</span></span>
-    Replace<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span></pre></div>
-    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span> <span class="pl-k">*</span>SESA<span class="pl-c1">.</span><span class="pl-k">*</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span>
-    Replace<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span></pre></div>
-    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span>Pre-authorization document - <span class="pl-c1">\d</span><span class="pl-k">+</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span>
-    Replace<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span></pre></div>
-    <div class="highlight highlight-source-js"><pre><span class="pl-c"><span class="pl-c">//</span> repeat this to remove all extra lines</span>
-    Find<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">[ <span class="pl-c1">\t</span>]</span><span class="pl-k">*</span><span class="pl-c1">\n</span><span class="pl-k">+</span><span class="pl-pds">/</span></span>
-    Replace<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span></pre></div>
+      <h4>Remove <code>item</code> text</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0007')" title="Copy">Find</div>
+          <div class="data"><input id="find0007" class="find-input" readonly="true" type="text" value="(item\s*.*\n*)+\)" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0007')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0007" class="find-input" readonly="true" type="text" value="\n" /></div>
+        </div>
+      </div>
     </li>
-    <li>
-    <h4>Clean-up for excel:</h4>
-    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span>===================================================================<span class="pl-pds">/</span></span>
-    Replace<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span>============<span class="pl-c1">\n\n</span><span class="pl-pds">/</span></span>
     
-    Find<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span>(ae<span class="pl-k">|</span>am<span class="pl-k">|</span>ap<span class="pl-k">|</span>bd<span class="pl-k">|</span>bm<span class="pl-k">|</span>bn<span class="pl-k">|</span>bp<span class="pl-k">|</span>od<span class="pl-k">|</span>rs) <span class="pl-k">*</span>(<span class="pl-c1">\d</span><span class="pl-k">+</span><span class="pl-cce">\.</span><span class="pl-c1">\d</span><span class="pl-k">+</span>(?:<span class="pl-c1">\s</span><span class="pl-k">*</span>pt<span class="pl-cce">\.</span><span class="pl-k">?</span><span class="pl-c1">\d</span>)<span class="pl-k">?</span><span class="pl-cce">\.</span>txt)<span class="pl-c1">\n</span>◊~~~~~~~~~~~~~~~~~~~~◊<span class="pl-pds">/</span></span>
-    Replace<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-k">\1</span> <span class="pl-k">\2</span><span class="pl-c1">\n</span><span class="pl-pds">/</span></span>
-    
-    Find<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span>◊~~~~~~~~~~~~~~~~~~~~◊<span class="pl-pds">/</span></span>
-    Replace<span class="pl-k">:</span>
-    <span class="pl-c"><span class="pl-c">//</span></span></pre></div>
-    </li>
     <li>
-    <h4>Clean up any records that were missed earlier (usually missing unit number before name)</h4>
-    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-k">^</span>(<span class="pl-c1">\d</span><span class="pl-k">+</span>)<span class="pl-c1">[ ]</span><span class="pl-pds">/</span></span>
-    Replace<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-k">\1</span> 00000000 <span class="pl-pds">/</span></span>
+      <h4>Remove SESA labeling lines</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0008')" title="Copy">Find</div>
+          <div class="data"><input id="find0008" class="find-input" readonly="true" type="text" value="\n *SESA.*\n" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0008')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0008" class="find-input" readonly="true" type="text" value="\n" /></div>
+        </div>
+      </div>
+    </li>
     
-    Find<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span>(<span class="pl-c1">\d</span><span class="pl-k">+</span>) (<span class="pl-c1">\d</span><span class="pl-k">{6,10}</span><span class="pl-k">|</span>COST CENTER )(<span class="pl-c1">[<span class="pl-c1">A-Za-z</span><span class="pl-c1">.</span> éáóíñ]</span><span class="pl-k">*</span>) (<span class="pl-c1">\d</span><span class="pl-k">+</span><span class="pl-cce">\.</span><span class="pl-c1">\d</span><span class="pl-k">+</span>) <span class="pl-k">*</span><span class="pl-cce">\/</span> <span class="pl-k">*</span>H <span class="pl-c1">\d</span><span class="pl-k">+</span><span class="pl-cce">\.</span><span class="pl-c1">\d\d</span> USD(?: <span class="pl-k">*</span>550420<span class="pl-cce">\/</span>order<span class="pl-cce">\/</span>(1014210015<span class="pl-k">|</span><span class="pl-c1">\d</span><span class="pl-k">{8,10}</span><span class="pl-k">|</span><span class="pl-c1">\d</span><span class="pl-k">{4}</span>) (<span class="pl-c1">\d</span><span class="pl-k">+</span>)<span class="pl-cce">\(</span>100<span class="pl-cce">\.</span>00<span class="pl-cce">\%\)</span><span class="pl-k">|</span> <span class="pl-k">*</span>550420<span class="pl-cce">\/</span>Cost center<span class="pl-cce">\/</span>(1014210015<span class="pl-k">|</span><span class="pl-c1">\d</span><span class="pl-k">{4,10}</span><span class="pl-k">|</span><span class="pl-c1">\d</span><span class="pl-k">+</span> <span class="pl-c1">\d</span><span class="pl-k">+</span>) <span class="pl-k">*</span><span class="pl-cce">\(</span>100<span class="pl-cce">\.</span>00<span class="pl-cce">\%\)</span>)<span class="pl-pds">/</span></span>
-    Replace<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\n</span><span class="pl-k">\1</span><span class="pl-c1">\t</span><span class="pl-k">\3</span><span class="pl-c1">\t</span><span class="pl-k">\2</span><span class="pl-c1">\t</span><span class="pl-k">\5\6\7</span><span class="pl-c1">\t</span><span class="pl-k">\4</span><span class="pl-pds">/</span></span></pre></div>
-    </li>
     <li>
-    <h4>Final cleanup of extra spaces</h4>
-    <div class="highlight highlight-source-js"><pre>Find<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">[ ]</span><span class="pl-k">*</span><span class="pl-c1">\t</span><span class="pl-c1">[ ]</span><span class="pl-k">*</span><span class="pl-pds">/</span></span>
-    Replace<span class="pl-k">:</span>
-    <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\t</span><span class="pl-pds">/</span></span></pre></div>
+      <h4>Remove "Pre-authorization document" lines</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0009')" title="Copy">Find</div>
+          <div class="data"><input id="find0009" class="find-input" readonly="true" type="text" value="\nPre-authorization document - \d+\n" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0009')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0009" class="find-input" readonly="true" type="text" value="\n" /></div>
+        </div>
+      </div>
     </li>
-    </ul>
-    <p>--</p>
-    <h2>EXTRAS</h2>
+    
+    <li>
+      <h4>Replace multiple blank lines with single blank lines</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find00092')" title="Copy">Find</div>
+          <div class="data"><input id="find00092" class="find-input" readonly="true" type="text" value="([ \t ]*\n)+" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl00092')" title="Copy">Replace</div>
+          <div class="data"><input id="repl00092" class="find-input" readonly="true" type="text" value="\n" /></div>
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <h4>Clean up for Excel 1: shorten horizontal lines made of equal signs</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0010')" title="Copy">Find</div>
+          <div class="data"><input id="find0010" class="find-input" readonly="true" type="text" value="===================================================================" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0010')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0010" class="find-input" readonly="true" type="text" value="\n============\n\n" /></div>
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <h4>Clean up for Excel 2: remove "squiggly" lines after filename headers</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0011')" title="Copy">Find</div>
+          <div class="data"><input id="find0011" class="find-input" readonly="true" type="text" value="(ae|am|ap|bd|bm|bn|bp|od|oft|rs) *(\d+\.\d+(?:\s*pt\.?\d)?\.txt)\n◊~~~~~~~~~~~~~~~~~~~~◊" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0011')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0011" class="find-input" readonly="true" type="text" value="\1 \2\n" /></div>
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <h4>Clean up for Excel 3: remove any leftover "squiggly" lines</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0012')" title="Copy">Find</div>
+          <div class="data"><input id="find0012" class="find-input" readonly="true" type="text" value="◊~~~~~~~~~~~~~~~~~~~~◊\n" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0012')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0012" class="find-input" readonly="true" type="text" value="\n" /></div>
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <h4>Record clean up 1.1: if any lines had N/A for unit numbers, replace it with a fake all-zero unit number</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0013')" title="Copy">Find</div>
+          <div class="data"><input id="find0013" class="find-input" readonly="true" type="text" value="^(\d+)[ ](N/A|NA)[ ]" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0013')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0013" class="find-input" readonly="true" type="text" value="\1 00000000 " /></div>
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <h4>Record clean up 1.2: fix former N/A lines that now have the new all-zero unit number</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0014')" title="Copy">Find</div>
+          <!-- <div class="data"><input id="find0014" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER )([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{4,10}|\d+ \d+) *\(100\.00\%\))" /></div> -->
+          <div class="data"><input id="find0014" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER )([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{3,4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{3,10}|\d+ \d+) *\(100\.00\%\))" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0014')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0014" class="find-input" readonly="true" type="text" value="\n\1\t\3\t\2\t\5\6\7\t\4" /></div>
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <h4>Record clean up 2.1: if any lines were missing unit numbers, create a fake all-zero unit number</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0015')" title="Copy">Find</div>
+          <div class="data"><input id="find0015" class="find-input" readonly="true" type="text" value="^(\d+)[ ]" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0015')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0015" class="find-input" readonly="true" type="text" value="\1 00000000 " /></div>
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <h4>Record clean up 2.2: fix any lines that now have the new all-zero unit number</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0016')" title="Copy">Find</div>
+          <div class="data"><input id="find0016" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER )([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{4,10}|\d+ \d+) *\(100\.00\%\))" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0016')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0016" class="find-input" readonly="true" type="text" value="\n\1\t\3\t\2\t\5\6\7\t\4" /></div>
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <h4>Final cleanup of any extra spaces around tabs</h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0017')" title="Copy">Find</div>
+          <div class="data"><input id="find0017" class="find-input" readonly="true" type="text" value="[ ]*\t[ ]*" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0017')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0017" class="find-input" readonly="true" type="text" value="\t" /></div>
+        </div>
+      </div>
+    </li>
+    
+    <!-- <li>
+      <h4></h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0016')" title="Copy">Find</div>
+          <div class="data"><input id="find0016" class="find-input" readonly="true" type="text" value="" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0016')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0016" class="find-input" readonly="true" type="text" value="" /></div>
+        </div>
+      </div>
+    </li> -->
+    
+    <!-- <li>
+      <h4></h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0017')" title="Copy">Find</div>
+          <div class="data"><input id="find0017" class="find-input" readonly="true" type="text" value="" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0017')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0017" class="find-input" readonly="true" type="text" value="" /></div>
+        </div>
+      </div>
+    </li> -->
+    
+    <!-- <li>
+      <h4></h4>
+      <div class="sr-box">
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('find0018')" title="Copy">Find</div>
+          <div class="data"><input id="find0018" class="find-input" readonly="true" type="text" value="" /></div>
+        </div>
+        <div class="sr-row">
+          <div class="label" onclick="copyFind('repl0018')" title="Copy">Replace</div>
+          <div class="data"><input id="repl0018" class="find-input" readonly="true" type="text" value="" /></div>
+        </div>
+      </div>
+    </li> -->
+    </ol>
+    <hr>
+    <h2>(OLD) EXTRAS</h2>
     <h3>Clean</h3>
     <p><strong>NEW</strong></p>
     <hr>
