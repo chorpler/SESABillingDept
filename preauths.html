@@ -219,7 +219,8 @@
         <div class="sr-row">
           <div class="label" onclick="copyFind('find0005')" title="Copy">Find</div>
           <!-- <div class="data"><input id="find0005" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER )([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{4,10}|\d+ \d+) *\(100\.00\%\))" /></div> -->
-          <div class="data"><input id="find0005" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER )([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{3,4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{3,10}|\d+ \d+) *\(100\.00\%\))" /></div>
+          <!-- <div class="data"><input id="find0005" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER )([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{3,4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{3,10}|\d+ \d+) *\(100\.00\%\))" /></div> -->
+          <div class="data"><input id="find0005" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER|ISO \d{3,8}) ([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{3,4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{3,10}|\d+ \d+) *\(100\.00\%\))" /></div>
         </div>
         <div class="sr-row">
           <div class="label" onclick="copyFind('repl0005')" title="Copy">Replace</div>
@@ -341,15 +342,15 @@
     </li>
     
     <li>
-      <h4>Record clean up 1.1: if any lines had N/A for unit numbers, replace it with a fake all-zero unit number</h4>
+      <h4>Record clean up 1.1: if any lines had N/A or nothing for unit numbers, replace it with a fake all-zero unit number</h4>
       <div class="sr-box">
         <div class="sr-row">
           <div class="label" onclick="copyFind('find0013')" title="Copy">Find</div>
-          <div class="data"><input id="find0013" class="find-input" readonly="true" type="text" value="^(\d+)[ ](N/A|NA)[ ]" /></div>
+          <div class="data"><input id="find0013" class="find-input" readonly="true" type="text" value="^(\d+)[ ](N/A |NA )?(\w\. \w+)[ ]" /></div>
         </div>
         <div class="sr-row">
           <div class="label" onclick="copyFind('repl0013')" title="Copy">Replace</div>
-          <div class="data"><input id="repl0013" class="find-input" readonly="true" type="text" value="\1 00000000 " /></div>
+          <div class="data"><input id="repl0013" class="find-input" readonly="true" type="text" value="\1 00000000 \3 " /></div>
         </div>
       </div>
     </li>
@@ -369,7 +370,7 @@
       </div>
     </li>
     
-    <li>
+    <!-- <li>
       <h4>Record clean up 2.1: if any lines were missing unit numbers, create a fake all-zero unit number</h4>
       <div class="sr-box">
         <div class="sr-row">
@@ -395,7 +396,7 @@
           <div class="data"><input id="repl0016" class="find-input" readonly="true" type="text" value="\n\1\t\3\t\2\t\5\6\7\t\4" /></div>
         </div>
       </div>
-    </li>
+    </li> -->
     
     <li>
       <h4>Final cleanup of any extra spaces around tabs</h4>
