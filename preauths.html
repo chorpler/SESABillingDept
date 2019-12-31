@@ -1,6 +1,7 @@
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <title>Preauths</title>
   <style type="text/css">
     .fr-list li {
@@ -119,6 +120,12 @@
 </head>
 <body>
   <h1>Convert/setup Pre-Auth PDF Data for copy/paste to a template</h1>
+  <p><a href="https://github.com/chorpler/SESABillingDept">GitHub repository</a></p>
+  <ul>
+    <li><a href="https://raw.githubusercontent.com/chorpler/SESABillingDept/master/RegReplace_Rules.json">Sublime RegReplace rules</a></li>
+    <li><a href="https://raw.githubusercontent.com/chorpler/SESABillingDept/master/RegReplace_Commands.json">Sublime RegReplace commands</a></li>
+    <li><a href="https://raw.githubusercontent.com/chorpler/SESABillingDept/master/RegReplace.sublime-settings">Sublime RegReplace settings</a></li>
+  </ul>
   <h2><strong>NOTE</strong></h2>
   <p>This document must be updated if new sites are added. Current sites are:</p>
   <ul>
@@ -220,7 +227,7 @@
           <div class="label" onclick="copyFind('find0005')" title="Copy">Find</div>
           <!-- <div class="data"><input id="find0005" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER )([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{4,10}|\d+ \d+) *\(100\.00\%\))" /></div> -->
           <!-- <div class="data"><input id="find0005" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER )([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{3,4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{3,10}|\d+ \d+) *\(100\.00\%\))" /></div> -->
-          <div class="data"><input id="find0005" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER|ISO \d{3,8}) ([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{3,4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{3,10}|\d+ \d+) *\(100\.00\%\))" /></div>
+          <div class="data"><input id="find0005" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|\w{1,4}\d{3,6}|COST CENTER|ISO \d{3,8}) ([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{3,4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{3,10}|\d+ \d+) *\(100\.00\%\))" /></div>
         </div>
         <div class="sr-row">
           <div class="label" onclick="copyFind('repl0005')" title="Copy">Replace</div>
@@ -361,7 +368,7 @@
         <div class="sr-row">
           <div class="label" onclick="copyFind('find0014')" title="Copy">Find</div>
           <!-- <div class="data"><input id="find0014" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER )([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{4,10}|\d+ \d+) *\(100\.00\%\))" /></div> -->
-          <div class="data"><input id="find0014" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|COST CENTER )([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{3,4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{3,10}|\d+ \d+) *\(100\.00\%\))" /></div>
+          <div class="data"><input id="find0014" class="find-input" readonly="true" type="text" value="\n(\d+) (\d{6,10}|\w{1,4}\d{3,6}|COST CENTER|ISO \d{3,8}) ([A-Za-z. éáóíñ]*) (\d+\.\d+) *\/ *H \d+\.\d\d USD(?: *550420\/order\/(1014210015|\d{8,10}|\d{3,4}) (\d+)\(100\.00\%\)| *550420\/Cost center\/(1014210015|\d{3,10}|\d+ \d+) *\(100\.00\%\))" /></div>
         </div>
         <div class="sr-row">
           <div class="label" onclick="copyFind('repl0014')" title="Copy">Replace</div>

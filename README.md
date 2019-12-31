@@ -1,7 +1,9 @@
 # Convert/setup Pre-Auth PDF Data for copy/paste to a template
 
 ## **NOTE**
-This document must be updated if new sites are added. Current sites are: 
+The latest instructions are [here](https://sesafleetservices.com/preauths.html) now.
+
+<!-- This document must be updated if new sites are added. Current sites are: 
 - AE
 - AM
 - AP
@@ -184,4 +186,4 @@ almost always used in coding or text-only documents to *visually* structure the 
 /[ \t]*\n[ \t]*/
 ```
 
-to include leading as well as trailing spaces (or tabs) at the beginning and ends of every line?
+to include leading as well as trailing spaces (or tabs) at the beginning and ends of every line? -->
