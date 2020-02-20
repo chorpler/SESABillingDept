@@ -211,7 +211,8 @@
       <div class="sr-box">
         <div class="sr-row">
           <div class="label" onclick="copyFind('find0004')" title="Copy">Find</div>
-          <div class="data"><input id="find0004" class="find-input" readonly="true" type="text" value="(ae|am|ap|bd|bm|bn|bp|od|oft|rs) *(\d+\.\d+(?:\s*pt\.?\d)?\.txt)\n(?:[\:\-\/\.\#,\@\+\w\s]*?(Authorization number)\: *(\d{10})\s*[\w \:\n,\(\/\-\.\#\t]*\))" /></div>
+          <!-- <div class="data"><input id="find0004" class="find-input" readonly="true" type="text" value="(ae|ald|am|ap|bd|bm|bn|bp|od|oft|rs) *(\d+\.\d+(?:\s*pt\.?\d)?\.txt)\n(?:[\:\-\/\.\#,\@\+\w\s]*?(Authorization number)\: *(\d{10})\s*[\w \:\n,\(\/\-\.\#\t]*\))" /></div> -->
+          <div class="data"><input id="find0004" class="find-input" readonly="true" type="text" value="(?mi)(ae|ald|am|ap|bd|bm|bn|bp|od|oft|rs) *(\d+\.\d+(?:\s*pt\.?\d|\s*)?(?:\s*hmlc)?\.txt)\n(?:[\:\-\/\.\#,\@\&\+\w\s]*?(Authorization number)\: *(\d{10})\s*[\w \:\n,\(\/\-\.\#\t]*\))" /></div>
         </div>
         <div class="sr-row">
           <div class="label" onclick="copyFind('repl0004')" title="Copy">Replace</div>
@@ -341,7 +342,8 @@
       <div class="sr-box">
         <div class="sr-row">
           <div class="label" onclick="copyFind('find0011')" title="Copy">Find</div>
-          <div class="data"><input id="find0011" class="find-input" readonly="true" type="text" value="(ae|am|ap|bd|bm|bn|bp|od|oft|rs) *(\d+\.\d+(?:\s*pt\.?\d)?\.txt)\n◊~~~~~~~~~~~~~~~~~~~~◊" /></div>
+          <!-- <div class="data"><input id="find0011" class="find-input" readonly="true" type="text" value="(ae|ald|am|ap|bd|bm|bn|bp|od|oft|rs) *(\d+\.\d+(?:\s*pt\.?\d)?\.txt)\n◊~~~~~~~~~~~~~~~~~~~~◊" /></div> -->
+          <div class="data"><input id="find0011" class="find-input" readonly="true" type="text" value="(?mi)(ae|ald|am|ap|bd|bm|bn|bp|od|oft|rs) *(\d+\.\d+(?:\s*pt\.?\d|\s*)?(?:\s*hmlc)?\.txt)\n◊~~~~~~~~~~~~~~~~~~~~◊" /></div>
         </div>
         <div class="sr-row">
           <div class="label" onclick="copyFind('repl0011')" title="Copy">Replace</div>
