@@ -9,7 +9,16 @@
         "preauths_step_03",
         "preauths_step_04",
         "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
         "preauths_step_06",
+        "preauths_step_06.5",
         "preauths_step_07",
         "preauths_step_08",
         "preauths_step_09",
@@ -20,8 +29,7 @@
         "preauths_step_14",
         "preauths_step_15",
         "preauths_step_16",
-        "preauths_step_17",
-        "preauths_step_18"
+        "preauths_step_17"
       ]
     }
   },
@@ -81,6 +89,146 @@
     }
   },
   {
+    "caption": "Reg Replace: Process Preauths Test 05.02",
+    "command": "reg_replace",
+    "args": {
+      "replacements": [
+        "preauths_step_01",
+        "preauths_step_02",
+        "preauths_step_03",
+        "preauths_step_04",
+        "preauths_step_05",
+        "preauths_step_05.02"
+      ]
+    }
+  },
+  {
+    "caption": "Reg Replace: Process Preauths Test 05.03",
+    "command": "reg_replace",
+    "args": {
+      "replacements": [
+        "preauths_step_01",
+        "preauths_step_02",
+        "preauths_step_03",
+        "preauths_step_04",
+        "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03"
+      ]
+    }
+  },
+  {
+    "caption": "Reg Replace: Process Preauths Test 05.04",
+    "command": "reg_replace",
+    "args": {
+      "replacements": [
+        "preauths_step_01",
+        "preauths_step_02",
+        "preauths_step_03",
+        "preauths_step_04",
+        "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04"
+      ]
+    }
+  },
+  {
+    "caption": "Reg Replace: Process Preauths Test 05.05",
+    "command": "reg_replace",
+    "args": {
+      "replacements": [
+        "preauths_step_01",
+        "preauths_step_02",
+        "preauths_step_03",
+        "preauths_step_04",
+        "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05"
+      ]
+    }
+  },
+  {
+    "caption": "Reg Replace: Process Preauths Test 05.06",
+    "command": "reg_replace",
+    "args": {
+      "replacements": [
+        "preauths_step_01",
+        "preauths_step_02",
+        "preauths_step_03",
+        "preauths_step_04",
+        "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06"
+      ]
+    }
+  },
+  {
+    "caption": "Reg Replace: Process Preauths Test 05.07",
+    "command": "reg_replace",
+    "args": {
+      "replacements": [
+        "preauths_step_01",
+        "preauths_step_02",
+        "preauths_step_03",
+        "preauths_step_04",
+        "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07"
+      ]
+    }
+  },
+  {
+    "caption": "Reg Replace: Process Preauths Test 05.08",
+    "command": "reg_replace",
+    "args": {
+      "replacements": [
+        "preauths_step_01",
+        "preauths_step_02",
+        "preauths_step_03",
+        "preauths_step_04",
+        "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08"
+      ]
+    }
+  },
+  {
+    "caption": "Reg Replace: Process Preauths Test 05.09",
+    "command": "reg_replace",
+    "args": {
+      "replacements": [
+        "preauths_step_01",
+        "preauths_step_02",
+        "preauths_step_03",
+        "preauths_step_04",
+        "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09"
+      ]
+    }
+  },
+  {
     "caption": "Reg Replace: Process Preauths Test 06",
     "command": "reg_replace",
     "args": {
@@ -90,7 +238,38 @@
         "preauths_step_03",
         "preauths_step_04",
         "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
         "preauths_step_06"
+      ]
+    }
+  },
+  {
+    "caption": "Reg Replace: Process Preauths Test 06.5",
+    "command": "reg_replace",
+    "args": {
+      "replacements": [
+        "preauths_step_01",
+        "preauths_step_02",
+        "preauths_step_03",
+        "preauths_step_04",
+        "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
+        "preauths_step_06",
+        "preauths_step_06.5"
       ]
     }
   },
@@ -104,7 +283,16 @@
         "preauths_step_03",
         "preauths_step_04",
         "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
         "preauths_step_06",
+        "preauths_step_06.5",
         "preauths_step_07"
       ]
     }
@@ -119,6 +307,14 @@
         "preauths_step_03",
         "preauths_step_04",
         "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
         "preauths_step_06",
         "preauths_step_07",
         "preauths_step_08"
@@ -135,7 +331,16 @@
         "preauths_step_03",
         "preauths_step_04",
         "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
         "preauths_step_06",
+        "preauths_step_06.5",
         "preauths_step_07",
         "preauths_step_08",
         "preauths_step_09"
@@ -152,7 +357,16 @@
         "preauths_step_03",
         "preauths_step_04",
         "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
         "preauths_step_06",
+        "preauths_step_06.5",
         "preauths_step_07",
         "preauths_step_08",
         "preauths_step_09",
@@ -170,7 +384,16 @@
         "preauths_step_03",
         "preauths_step_04",
         "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
         "preauths_step_06",
+        "preauths_step_06.5",
         "preauths_step_07",
         "preauths_step_08",
         "preauths_step_09",
@@ -189,7 +412,16 @@
         "preauths_step_03",
         "preauths_step_04",
         "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
         "preauths_step_06",
+        "preauths_step_06.5",
         "preauths_step_07",
         "preauths_step_08",
         "preauths_step_09",
@@ -209,7 +441,16 @@
         "preauths_step_03",
         "preauths_step_04",
         "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
         "preauths_step_06",
+        "preauths_step_06.5",
         "preauths_step_07",
         "preauths_step_08",
         "preauths_step_09",
@@ -230,7 +471,16 @@
         "preauths_step_03",
         "preauths_step_04",
         "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
         "preauths_step_06",
+        "preauths_step_06.5",
         "preauths_step_07",
         "preauths_step_08",
         "preauths_step_09",
@@ -252,7 +502,16 @@
         "preauths_step_03",
         "preauths_step_04",
         "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
         "preauths_step_06",
+        "preauths_step_06.5",
         "preauths_step_07",
         "preauths_step_08",
         "preauths_step_09",
@@ -275,7 +534,16 @@
         "preauths_step_03",
         "preauths_step_04",
         "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
         "preauths_step_06",
+        "preauths_step_06.5",
         "preauths_step_07",
         "preauths_step_08",
         "preauths_step_09",
@@ -299,7 +567,16 @@
         "preauths_step_03",
         "preauths_step_04",
         "preauths_step_05",
+        "preauths_step_05.02",
+        "preauths_step_05.03",
+        "preauths_step_05.04",
+        "preauths_step_05.05",
+        "preauths_step_05.06",
+        "preauths_step_05.07",
+        "preauths_step_05.08",
+        "preauths_step_05.09",
         "preauths_step_06",
+        "preauths_step_06.5",
         "preauths_step_07",
         "preauths_step_08",
         "preauths_step_09",
@@ -311,32 +588,6 @@
         "preauths_step_15",
         "preauths_step_16",
         "preauths_step_17"
-      ]
-    }
-  },
-  {
-    "caption": "Reg Replace: Process Preauths Test 18",
-    "command": "reg_replace",
-    "args": {
-      "replacements": [
-        "preauths_step_01",
-        "preauths_step_02",
-        "preauths_step_03",
-        "preauths_step_04",
-        "preauths_step_05",
-        "preauths_step_06",
-        "preauths_step_07",
-        "preauths_step_08",
-        "preauths_step_09",
-        "preauths_step_10",
-        "preauths_step_11",
-        "preauths_step_12",
-        "preauths_step_13",
-        "preauths_step_14",
-        "preauths_step_15",
-        "preauths_step_16",
-        "preauths_step_17",
-        "preauths_step_18"
       ]
     }
   }

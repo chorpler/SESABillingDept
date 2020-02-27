@@ -29,12 +29,82 @@
 			"greedy": true,
 			"replace": "\\1"
 		},
-		"preauths_step_05":
+		"preauths_step_04.5":
 		{
-			"find": "(?mi)(ae|ald|am|ap|bd|bm|bn|bp|od|oft|rs) *(\\d+\\.\\d+(?:\\s*pt\\.?\\d|\\s*)?(?:\\s*hmlc)?\\.txt)\\n(?:[\\:\\-\\/\\.\\#,\\@\\&\\+\\w\\s]*?(Authorization number)\\: *(\\d{10})\\s*[\\w \\:\\n,\\(\\/\\-\\.\\#\\t]*\\))",
+			"find": "(?mi)(ae|ald|am|ap|bd|bm|bn|bp|od|oft|rs) *(\\d+\\.\\d+(?:\\s*pt\\.?\\d|\\s*)?(?:\\s*hmlc)?(?:\\s*part \\d{1,3})?\\.txt)[-\\/\\w\\d\\s\\r\\n]*?Company[^:]*:\\s*(Halliburton|HM[&]*LC)(?:[\\w\\s\\d]*?)\\s*Date:\\s*([\\d\\/-]+)(?:[\\:\\-\\/\\.\\#,\\@\\&\\+\\w\\s]*?(Authorization number)\\: *(\\d{10})\\s*[\\w \\:\\n,\\(\\/\\-\\.\\#\\t]*\\))",
 			"greedy": true,
 			"name": "preauths_step_05",
 			"replace": "\\1 \\2\\n◊~~~~~~~~~~~~~~~~~~~~◊\\nItem\\tTechnician\\tUnit No.\\tOrder No.\\tHrs\\tAuth   No.\\t\\4\\n◊~~~~~~~~~~~~~~~~~~~~◊\\n"
+		},
+		"preauths_step_04.5.2":
+		{
+			"find": "(?mi)(ae|ald|am|ap|bd|bm|bn|bp|od|oft|rs) *(\\d+\\.\\d+(?:\\s*pt\\.?\\d|\\s*)?(?:\\s*hmlc)?(?:\\s*part \\d{1,3})?\\.txt)[-\\/\\w\\d\\s\\r\\n]*?Company[^:]*:\\s*(Halliburton|HM[&]*LC)(?:[\\w\\s\\d]*?)\\s*Date:\\s*([\\d\\/-]+)(?:[\\:\\-\\/\\.\\#,\\@\\&\\+\\w\\s]*?(Authorization number)\\: *(\\d{10})\\s*[\\w \\:\\n,\\(\\/\\-\\.\\#\\t]*\\))",
+			"greedy": true,
+			"name": "preauths_step_05",
+			"replace": "\\1 \\2\\n◊~~~~~~~~~~~~~~~~~~~~◊\\nItem\\tTechnician\\tUnit No.\\tOrder No.\\tHrs\\tAuth   No.\\t\\4\\n◊~~~~~~~~~~~~~~~~~~~~◊\\n"
+		},
+		"preauths_step_05":
+		{
+			"find": "(?mi)(ae|ald|am|ap|bd|bm|bn|bp|od|oft|rs) *(\\d+\\.\\d+(?:\\s*pt\\.?\\d|\\s*)?(?:\\s*hmlc)?(?:\\s*part \\d{1,3})?\\.txt)[-\\/\\w\\d\\s\\r\\n]*?Company[^:]*:\\s*(Halliburton|HM[&]*LC)(?:[\\w\\s\\d]*?)\\s*Date:\\s*([\\d\\/-]+)\\s*(?:[&\\/\\w\\d\\s:.@,-]*)Total amount:\\s*([.,0123456789]+)\\s*USD\\s*(?:[\\:\\-\\/\\.\\#,\\@\\&\\+\\w\\s]*?(Authorization number)\\: *(\\d{10})\\s*[\\w \\:\\n,\\(\\/\\-\\.\\#\\t]*\\))",
+			"greedy": true,
+			"name": "preauths_step_05",
+			"replace": "\\1 \\2\\t_@_\\3__@@__\\t\\t\\t___@@@___\\5____@@@@____\\t\\t_____@@@@@_____\\4______@@@@@@______\\n◊~~~~~~~~~~~~~~~~~~~~◊\\nItem\\tTechnician\\tUnit No.\\tOrder No.\\tHrs\\tAuth   No.\\t\\7\\n◊~~~~~~~~~~~~~~~~~~~~◊\\n"
+		},
+		"preauths_step_05.02":
+		{
+			"find": "(?mi)\\t_@_(Halliburton[^:_\\s]*)__@@__\\t",
+			"greedy": true,
+			"name": "preauths_step_05.02",
+			"replace": "\\tHBES\\t"
+		},
+		"preauths_step_05.03":
+		{
+			"find": "(?mi)\\t_@_([HMLC&]*)__@@__\\t",
+			"greedy": true,
+			"name": "preauths_step_05.03",
+			"replace": "\\tHMLC\\t"
+		},
+		"preauths_step_05.04":
+		{
+			"find": "(?mi)_____@@@@@_____([^_]*)______@@@@@@______",
+			"greedy": true,
+			"name": "preauths_step_05.04",
+			"replace": "\\1"
+		},
+		"preauths_step_05.05":
+		{
+			"find": "(?mi)___@@@___([.01234567890]*)[,]*([.01234567890]*)____@@@@____",
+			"greedy": true,
+			"name": "preauths_step_05.05",
+			"replace": "___@@@___\\1\\2____@@@@____"
+		},
+		"preauths_step_05.06":
+		{
+			"find": "(?mi)___@@@___([.01234567890]*)[,]*([.01234567890]*)____@@@@____",
+			"greedy": true,
+			"name": "preauths_step_05.06",
+			"replace": "___@@@___\\1\\2____@@@@____"
+		},
+		"preauths_step_05.07":
+		{
+			"find": "(?mi)___@@@___([.01234567890]*)[,]*([.01234567890]*)____@@@@____",
+			"greedy": true,
+			"name": "preauths_step_05.07",
+			"replace": "___@@@___\\1\\2____@@@@____"
+		},
+		"preauths_step_05.08":
+		{
+			"find": "(?mi)___@@@___([.01234567890]*)[,]*([.01234567890]*)____@@@@____",
+			"greedy": true,
+			"name": "preauths_step_05.08",
+			"replace": "___@@@___\\1\\2____@@@@____"
+		},
+		"preauths_step_05.09":
+		{
+			"find": "(?mi)\\t___@@@___([,.01234567890]*)____@@@@____\\t",
+			"greedy": true,
+			"name": "preauths_step_05.08",
+			"replace": "\\t\\1\\t"
 		},
 		"preauths_step_06":
 		{
